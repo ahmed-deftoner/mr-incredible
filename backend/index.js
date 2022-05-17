@@ -1,6 +1,35 @@
 var http = require('http'),
     fs = require('fs'),
-    util = require('util');
+    util = require('util'),
+    ffmpeg = require('fluent-ffmpeg'),
+    axios = require('axios');
+    const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+// make sure you set the correct path to your video file
+ffmpeg.setFfmpegPath(ffmpegPath);
+
+var proc = ffmpeg('angry.mp4')
+        .videoFilters({
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: 'THIS IS TEXT',
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    })
+        .on('end', function () {
+            console.log('file has been converted succesfully');
+        })
+        .on('error', function (err) {
+            console.log('an error happened: ' + err.message);
+        })
+        // save to file
+        .save('./out.mp4'); 
 
 http.createServer(function (req, res) {
   var path = 'angry.mp4';
