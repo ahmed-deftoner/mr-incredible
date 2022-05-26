@@ -1,11 +1,5 @@
-const { timeStamp } = require('console');
-var http = require('http'),
-    fs = require('fs'),
-    util = require('util'),
-    ffmpeg = require('fluent-ffmpeg'),
-    axios = require('axios');
-const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
-const express = require('express')
+const express = require('express');
+const {makeAngry}=require('./angry');
 const app = express()
 const port = 3000
 const str = [];
@@ -35,152 +29,12 @@ app.post('/api/angry', function(req, res) {
     's2': str[1],
     's3': str[2]
   });
+  makeAngry(str)
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-// make sure you set the correct path to your video file
-ffmpeg.setFfmpegPath(ffmpegPath);
-
-
-var proc = ffmpeg('angry.mp4')
-        .videoFilters({
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[0],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,0,3)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[1],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[3],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[4],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[5],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[6],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[7],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[8],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    },{
-      filter: 'drawtext',
-      options: {
-        fontfile:'font.ttf',
-        text: str[9],
-        fontsize: 20,
-        fontcolor: 'white',
-        x: '(main_w/2-text_w/2)',
-        y: 50,
-        enable:'between(t,3,6)',
-        shadowcolor: 'black',
-        shadowx: 2,
-        shadowy: 2
-      }
-    })
-        .on('end', function () {
-            console.log('file has been converted succesfully');
-        })
-        .on('error', function (err) {
-            console.log('an error happened: ' + err.message);
-        })
-        // save to file
-        .save('./out.mp4'); 
 
 /*
 http.createServer(function (req, res) {
