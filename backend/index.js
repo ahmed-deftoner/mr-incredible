@@ -1,3 +1,4 @@
+const { timeStamp } = require('console');
 var http = require('http'),
     fs = require('fs'),
     util = require('util'),
@@ -12,11 +13,26 @@ var proc = ffmpeg('angry.mp4')
       filter: 'drawtext',
       options: {
         fontfile:'font.ttf',
-        text: 'THIS IS TEXT',
+        text: 'Yelp',
         fontsize: 20,
         fontcolor: 'white',
         x: '(main_w/2-text_w/2)',
         y: 50,
+        enable:'between(t,0,3)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: 'hehe',
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
         shadowcolor: 'black',
         shadowx: 2,
         shadowy: 2
