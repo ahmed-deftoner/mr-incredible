@@ -4,16 +4,53 @@ var http = require('http'),
     util = require('util'),
     ffmpeg = require('fluent-ffmpeg'),
     axios = require('axios');
-    const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const ffmpegPath = require('@ffmpeg-installer/ffmpeg').path;
+const express = require('express')
+const app = express()
+const port = 3000
+const str = [];
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.post('/api/angry', function(req, res) {
+  str[0] = req.body.s1;
+  str[1] = req.body.s2;
+  str[2] = req.body.s3;
+  str[3] = req.body.s4;
+  str[4] = req.body.s5;
+  str[5] = req.body.s6;
+  str[6] = req.body.s7;
+  str[7] = req.body.s8;
+  str[8] = req.body.s9;
+  str[9] = req.body.s10;
+
+
+  res.send({
+    's1': str[0],
+    's2': str[1],
+    's3': str[2]
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
 // make sure you set the correct path to your video file
 ffmpeg.setFfmpegPath(ffmpegPath);
+
 
 var proc = ffmpeg('angry.mp4')
         .videoFilters({
       filter: 'drawtext',
       options: {
         fontfile:'font.ttf',
-        text: 'Yelp',
+        text: str[0],
         fontsize: 20,
         fontcolor: 'white',
         x: '(main_w/2-text_w/2)',
@@ -27,7 +64,105 @@ var proc = ffmpeg('angry.mp4')
       filter: 'drawtext',
       options: {
         fontfile:'font.ttf',
-        text: 'hehe',
+        text: str[1],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[3],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[4],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[5],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[6],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[7],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[8],
+        fontsize: 20,
+        fontcolor: 'white',
+        x: '(main_w/2-text_w/2)',
+        y: 50,
+        enable:'between(t,3,6)',
+        shadowcolor: 'black',
+        shadowx: 2,
+        shadowy: 2
+      }
+    },{
+      filter: 'drawtext',
+      options: {
+        fontfile:'font.ttf',
+        text: str[9],
         fontsize: 20,
         fontcolor: 'white',
         x: '(main_w/2-text_w/2)',
@@ -47,6 +182,7 @@ var proc = ffmpeg('angry.mp4')
         // save to file
         .save('./out.mp4'); 
 
+/*
 http.createServer(function (req, res) {
   var path = 'angry.mp4';
   var stat = fs.statSync(path);
@@ -71,4 +207,4 @@ http.createServer(function (req, res) {
     fs.createReadStream(path).pipe(res);
   }
 }).listen(1337, '127.0.0.1');
-console.log('Server running at http://127.0.0.1:1337/');
+console.log('Server running at http://127.0.0.1:1337/');*/
