@@ -9,9 +9,9 @@ const str = [];
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
+app.get('/', function(req, res){
+  res.download('out.mp4');
+});
 
 app.post('/api/angry', function(req, res) {
   str[0] = req.body.s1;
