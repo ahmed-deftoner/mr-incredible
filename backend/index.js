@@ -1,5 +1,7 @@
 const express = require('express');
 const {makeAngry}=require('./angry');
+const { makeCanny } = require('./canny');
+const { makeUncanny } = require('./uncanny');
 const app = express()
 const port = 3000
 const str = [];
@@ -50,7 +52,7 @@ app.post('/api/canny', function(req, res) {
     's2': str[1],
     's3': str[2]
   });
-  makeAngry(str)
+  makeCanny(str)
 });
 
 app.post('/api/uncanny', function(req, res) {
@@ -71,7 +73,7 @@ app.post('/api/uncanny', function(req, res) {
     's2': str[1],
     's3': str[2]
   });
-  makeAngry(str)
+  makeUncanny(str)
 });
 
 app.listen(port, () => {
