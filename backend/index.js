@@ -32,6 +32,48 @@ app.post('/api/angry', function(req, res) {
   makeAngry(str)
 });
 
+app.post('/api/canny', function(req, res) {
+  str[0] = req.body.s1;
+  str[1] = req.body.s2;
+  str[2] = req.body.s3;
+  str[3] = req.body.s4;
+  str[4] = req.body.s5;
+  str[5] = req.body.s6;
+  str[6] = req.body.s7;
+  str[7] = req.body.s8;
+  str[8] = req.body.s9;
+  str[9] = req.body.s10;
+
+
+  res.send({
+    's1': str[0],
+    's2': str[1],
+    's3': str[2]
+  });
+  makeAngry(str)
+});
+
+app.post('/api/uncanny', function(req, res) {
+  str[0] = req.body.s1;
+  str[1] = req.body.s2;
+  str[2] = req.body.s3;
+  str[3] = req.body.s4;
+  str[4] = req.body.s5;
+  str[5] = req.body.s6;
+  str[6] = req.body.s7;
+  str[7] = req.body.s8;
+  str[8] = req.body.s9;
+  str[9] = req.body.s10;
+
+
+  res.send({
+    's1': str[0],
+    's2': str[1],
+    's3': str[2]
+  });
+  makeAngry(str)
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
