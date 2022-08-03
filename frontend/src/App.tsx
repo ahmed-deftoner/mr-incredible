@@ -1,14 +1,13 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { Link } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  
 
   return (
       <div className="flex justify-center mt-56 flex-col gap-3 md:flex-row">
-        <button>UNCANNY</button>
-        <button>ANGRY</button>
-        <button>CANNY</button>
+          <Link to="/uncanny">UNCANNY</Link>
+          <Link to="/angry">ANGRY</Link>
+          <Link to="/canny">CANNY</Link>
       </div>
   )
 }
