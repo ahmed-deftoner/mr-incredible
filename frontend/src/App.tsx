@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 function App() {
   
@@ -8,6 +8,7 @@ function App() {
           <Link to="/uncanny">UNCANNY</Link>
           <Link to="/angry">ANGRY</Link>
           <Link to="/canny">CANNY</Link>
+          <Outlet/>
       </div>
   )
 }

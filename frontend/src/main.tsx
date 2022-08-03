@@ -14,11 +14,10 @@ import Canny from './routes/canny'
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
-        <Route path="angry" element={<Angry />} />
-        <Route path="canny" element={<Canny />} />
-        <Route path="uncanny" element={<Uncanny />} />
-      </Route>
+      <Route path="/" element={<App />} />
+      <Route path="angry" element={<Angry />} />
+      <Route path="canny" element={<Canny />} />
+      <Route path="uncanny" element={<Uncanny />} />
     </Routes>
   </BrowserRouter>
 )
