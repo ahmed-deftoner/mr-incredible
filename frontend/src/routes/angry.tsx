@@ -10,6 +10,9 @@ const angry = memo(() => {
 
  async function PostMeme() {
     axios.post('http://localhost:3001/api/angry', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },{
       s1: 'Fred',
       s2: 'Flintstone',
       s3: 'Flintstone',
@@ -26,7 +29,7 @@ const angry = memo(() => {
     })
     .catch(function (error) {
       console.log(error);
-    });
+    })};
  }
 
   useEffect(() => {
