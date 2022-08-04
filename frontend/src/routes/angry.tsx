@@ -1,9 +1,33 @@
 import React, { memo, useEffect, useState } from 'react'
+import axios from 'axios'
+
 
 const angry = memo(() => {
 
   const [imgs, setimgs] = useState<string[]>([])
   const temp:Array<string> = []
+  const headings:Array<string> = []
+
+ async function PostMeme(s:Array<string>) {
+    axios.post('http://localhost:3001/api/angry', {
+      s1: 'Fred',
+      s2: 'Flintstone',
+      s3: 'Flintstone',
+      s4: 'Flintstone',
+      s5: 'Flintstone',
+      s6: 'Flintstone',
+      s7: 'Flintstone',
+      s8: 'Flintstone',
+      s9: 'Flintstone',
+      s10: 'Flintstone'
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+ }
 
   useEffect(() => {
     for (let index = 0; index < 10; index++) {
