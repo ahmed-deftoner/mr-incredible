@@ -8,7 +8,7 @@ const angry = memo(() => {
   const temp:Array<string> = []
   const headings:Array<string> = []
 
- async function PostMeme(s:Array<string>) {
+ async function PostMeme() {
     axios.post('http://localhost:3001/api/angry', {
       s1: 'Fred',
       s2: 'Flintstone',
@@ -46,7 +46,7 @@ const angry = memo(() => {
               <input></input>
             </li>
           ))}
-          <button className='bg-slate-700 px-8 py-5 hover:bg-slate-900'>
+          <button className='bg-slate-700 px-8 py-5 hover:bg-slate-900' onClick={PostMeme}>
             Generate meme
           </button>
       </div>
