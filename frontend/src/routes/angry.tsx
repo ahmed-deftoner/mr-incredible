@@ -1,24 +1,26 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 
 const angry = memo(() => {
 
-  const imgs:Array<string> = [];
+  const [imgs, setimgs] = useState([])
+  const temp:Array<string> = []
 
   useEffect(() => {
     for (let index = 0; index < 10; index++) {
-      imgs[index] = 'i' + (index+1)
-      console.log(imgs[index])
+      temp[index] = 'i' + (index+1)
+      console.log(temp[index])
     }
-  },)
+    setimgs(temp)
+  },[])
   
   return (
     <div>
-      <div className='flex flex-row justify-center'>
+      <div className='flex flex-col justify-center'>
           {imgs.map((item,index) => (
-            <>
+            <li key={index} className="flex flex-row">
               <img src=''></img>
-              <input>hsjs</input>
-            </>
+              <input></input>
+            </li>
           ))}
       </div>
     </div>
