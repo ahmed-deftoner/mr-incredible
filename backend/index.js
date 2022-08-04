@@ -3,7 +3,7 @@ const {makeAngry}=require('./angry');
 const { makeCanny } = require('./canny');
 const { makeUncanny } = require('./uncanny');
 const app = express()
-const port = 3000
+const port = 3001
 const str = [];
 
 app.use(express.json());

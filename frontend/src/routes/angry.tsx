@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react'
 
 const angry = memo(() => {
 
-  const [imgs, setimgs] = useState([])
+  const [imgs, setimgs] = useState<string[]>([])
   const temp:Array<string> = []
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const angry = memo(() => {
               <input></input>
             </li>
           ))}
-          <button>
+          <button className='bg-slate-700 px-8 py-5 hover:bg-slate-900'>
             Generate meme
           </button>
       </div>
