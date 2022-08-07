@@ -2,20 +2,23 @@ const express = require('express');
 const {makeAngry}=require('./angry');
 const { makeCanny } = require('./canny');
 const { makeUncanny } = require('./uncanny');
+const cors = require('cors');
 const app = express()
 const port = 3001
 const str = [];
 
 app.use(express.json());
+app.use(cors({
+  origin:"*"
+}));
 app.use(express.urlencoded({ extended: true }));
 
+
 app.get('/', function(req, res){
-  res.header("Access-Control-Allow-Origin", "*");
   res.download('out.mp4');
 });
 
 app.post('/api/angry', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   str[0] = req.body.s1;
   str[1] = req.body.s2;
   str[2] = req.body.s3;
@@ -37,7 +40,6 @@ app.post('/api/angry', function(req, res) {
 });
 
 app.post('/api/canny', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   str[0] = req.body.s1;
   str[1] = req.body.s2;
   str[2] = req.body.s3;
@@ -59,7 +61,6 @@ app.post('/api/canny', function(req, res) {
 });
 
 app.post('/api/uncanny', function(req, res) {
-  res.header("Access-Control-Allow-Origin", "*");
   str[0] = req.body.s1;
   str[1] = req.body.s2;
   str[2] = req.body.s3;

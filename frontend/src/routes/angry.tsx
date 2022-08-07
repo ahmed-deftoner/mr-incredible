@@ -2,7 +2,7 @@ import React, { memo, useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-const angry = memo(() => {
+const angry = () => {
 
   const [imgs, setimgs] = useState<string[]>([])
   const temp:Array<string> = []
@@ -10,9 +10,6 @@ const angry = memo(() => {
 
  async function PostMeme() {
     axios.post('http://localhost:3001/api/angry', {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },{
       s1: 'Fred',
       s2: 'Flintstone',
       s3: 'Flintstone',
@@ -30,7 +27,6 @@ const angry = memo(() => {
     .catch(function (error) {
       console.log(error);
     })};
- }
 
   useEffect(() => {
     for (let index = 0; index < 10; index++) {
@@ -54,7 +50,7 @@ const angry = memo(() => {
           </button>
       </div>
     </div>
-  )
-})
+  );
+}
 
 export default angry
